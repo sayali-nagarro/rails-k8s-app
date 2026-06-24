@@ -52,6 +52,6 @@ group :test do
 end
 
 # Production gems
-gem "puma", "~> 6.4"
+gem "puma", "~> 8.0"
 gem "dotenv-rails", "~> 3.1"
 gem "prometheus-client", "~> 4.2"  # For HPA metrics
