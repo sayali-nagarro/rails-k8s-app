@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rails-service
+  namespace: rails-app
+  labels:
+    app: rails
+    tier: api
+spec:
+  selector:
+    app: rails
+    tier: api
+  ports:
+  - port: 80
+    targetPort: 3000
+    name: http
+  type: ClusterIP
