@@ -55,4 +55,3 @@ end
 gem "puma", "~> 6.4"
 gem "dotenv-rails", "~> 3.1"
 gem "prometheus-client", "~> 4.2"  # For HPA metrics
-

@@ -1,19 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :update, :destroy]
+  before_action :set_product, only: [ :show, :update, :destroy ]
 
   def index
     products = Product.all
     render json: {
       data: products,
       count: products.count,
-      status: 'success'
+      status: "success"
     }
   end
 
   def show
     render json: {
       data: @product,
-      status: 'success'
+      status: "success"
     }
   end
 
@@ -23,13 +23,13 @@ class ProductsController < ApplicationController
     if product.save
       render json: {
         data: product,
-        status: 'success',
-        message: 'Product created successfully'
+        status: "success",
+        message: "Product created successfully"
       }, status: :created
     else
       render json: {
         errors: product.errors.full_messages,
-        status: 'error'
+        status: "error"
       }, status: :unprocessable_entity
     end
   end
@@ -38,13 +38,13 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       render json: {
         data: @product,
-        status: 'success',
-        message: 'Product updated successfully'
+        status: "success",
+        message: "Product updated successfully"
       }
     else
       render json: {
         errors: @product.errors.full_messages,
-        status: 'error'
+        status: "error"
       }, status: :unprocessable_entity
     end
   end
@@ -52,8 +52,8 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     render json: {
-      status: 'success',
-      message: 'Product deleted successfully'
+      status: "success",
+      message: "Product deleted successfully"
     }, status: :ok
   end
 
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
     render json: {
       data: products,
       count: products.count,
-      status: 'success'
+      status: "success"
     }
   end
 
@@ -73,15 +73,15 @@ class ProductsController < ApplicationController
       data: products,
       count: products.count,
       category: category,
-      status: 'success'
+      status: "success"
     }
   end
 
   def health
     render json: {
-      status: 'healthy',
+      status: "healthy",
       timestamp: Time.now.utc.iso8601,
-      database: ActiveRecord::Base.connection.active? ? 'connected' : 'disconnected'
+      database: ActiveRecord::Base.connection.active? ? "connected" : "disconnected"
     }
   end
 
@@ -102,8 +102,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: {
-      error: 'Product not found',
-      status: 'error'
+      error: "Product not found",
+      status: "error"
     }, status: :not_found
   end
 

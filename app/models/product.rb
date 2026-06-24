@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   validates :category, presence: true
 
   scope :active, -> { where(status: :active) }
-  scope :in_stock, -> { where('stock_quantity > ?', 0) }
+  scope :in_stock, -> { where("stock_quantity > ?", 0) }
   scope :by_category, ->(category) { where(category: category) if category.present? }
 
   def available?
